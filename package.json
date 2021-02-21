@@ -1,0 +1,46 @@
+{
+  "name": "@infinitywallet/periphery",
+  "version": "1.1.0-beta.0",
+  "description": "🎚 Peripheral smart contracts for interacting with the Infinity Protocol",
+  "engines": {
+    "node": ">=10"
+  },
+  "homepage": "https://infinitycrypto.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InfinityWallet/infinity-periphery"
+  },
+  "files": [
+    "build",
+    "contracts"
+  ],
+  "dependencies": {
+    "@infinitywallet/lib": "1.1.1",
+    "@infinitywallet/core": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "ethereum-waffle": "^2.4.1",
+    "ethereumjs-util": "^6.2.0",
+    "mocha": "^6.2.2",
+    "ncp": "^2.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "solc": "0.6.6",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  },
+  "scripts": {
+    "lint": "yarn prettier ./test/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts --write",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "waffle .waffle.json",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "prepublishOnly": "yarn test"
+  },
+  "license": "GPL-3.0-or-later"
+}
