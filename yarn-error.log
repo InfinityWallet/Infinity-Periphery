@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@infinitywallet/lib/-/lib-1.1.1.tgz: Request failed "404 Not Found"
+  Error: https://registry.yarnpkg.com/@infinitywallet/core/-/core-1.0.0.tgz: Request failed "404 Not Found"
       at ResponseError.ExtendableBuiltin (C:\Users\aron\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:696:66)
       at new ResponseError (C:\Users\aron\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:802:124)
       at Request.<anonymous> (C:\Users\aron\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66900:16)
@@ -44,7 +44,6 @@ npm manifest:
       "contracts"
     ],
     "dependencies": {
-      "@infinitywallet/lib": "1.1.1",
       "@infinitywallet/core": "1.0.0"
     },
     "devDependencies": {

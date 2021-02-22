@@ -4,8 +4,8 @@ import { deployContract } from 'ethereum-waffle'
 
 import { expandTo18Decimals } from './utilities'
 
-import InfinityFactory from '@infinitycrypto/core/build/InfinityFactory.json'
-import IInfinityPair from '@infinitycrypto/core/build/IInfinityPair.json'
+import InfinityFactory from '@infinitywallet/core/build/InfinityFactory.json'
+import IInfinityPair from '@infinitywallet/core/build/IInfinityPair.json'
 
 import ERC20 from '../../build/ERC20.json'
 import WETH9 from '../../build/WETH9.json'
@@ -25,7 +25,6 @@ interface Fixture {
   router01: Contract
   routerEventEmitter: Contract
   router: Contract
-  WETHExchangeV1: Contract
   pair: Contract
   WETHPair: Contract
 }
