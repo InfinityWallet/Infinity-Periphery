@@ -1,4 +1,4 @@
-# Infinity
+# Infinity Periphery
 
 [![Actions Status](https://github.com/InfinityWallet/infinity-periphery/workflows/CI/badge.svg)](https://github.com/InfinityWallet/infinity-periphery/actions)
 [![npm](https://img.shields.io/npm/v/@infinitywallet/periphery?style=flat-square)](https://npmjs.com/package/@infinitywallet/periphery)
