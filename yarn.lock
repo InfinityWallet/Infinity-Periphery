@@ -30,6 +30,11 @@
     ethers "^4.0.45"
     ganache-core "^2.10.2"
 
+"@infinitywallet/infinity-core@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@infinitywallet/infinity-core/-/infinity-core-1.0.0.tgz#80d8d70ee32b299913d61a69f6598f93a5cb0cbd"
+  integrity sha512-Qs9wbL8n5wglZDZ8v2ZmmfVekq4uggJ0WWueX7r0JeqHFrtQOyf4nYJc7i6IxxtvPHegyMoFMpDxVT3pMvpAFg==
+
 "@resolver-engine/core@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@resolver-engine/core/-/core-0.3.3.tgz#590f77d85d45bc7ecc4e06c654f41345db6ca967"
@@ -132,16 +137,6 @@
   version "12.12.35"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.35.tgz#1e61b226c14380f4384f70cfe49a65c2c553ad2b"
   integrity sha512-ASYsaKecA7TUsDrqIGPNk3JeEox0z/0XR/WsJJ8BIX/9+SkMSImQXKWfU/yBrSyc7ZSE/NPqLu36Nur0miCFfQ==
-
-"@infinitywallet/lib@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@infinitywallet/lib/-/lib-1.1.1.tgz#0afd29601846c16e5d082866cbb24a9e0758e6bc"
-  integrity sha512-2yK7sLpKIT91TiS5sewHtOa7YuM8IuBXVl4GZv2jZFys4D2sY7K5vZh6MqD25TPA95Od+0YzCVq6cTF2IKrOmg==
-
-"@infinitywallet/core@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@infinitywallet/core/-/core-1.0.0.tgz#e0fab91a7d53e8cafb5326ae4ca18351116b0844"
-  integrity sha512-BJiXrBGnN8mti7saW49MXwxDBRFiWemGetE58q8zgfnPPzQKq55ADltEILqOt6VFZ22kVeVKbF8gVd8aY3l7pA==
 
 "@web3-js/scrypt-shim@^0.1.0":
   version "0.1.0"

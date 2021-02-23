@@ -37,8 +37,10 @@ export async function getApprovalDigest(
   nonce: BigNumber,
   deadline: BigNumber
 ): Promise<string> {
-  const name = await token.name()
-  const DOMAIN_SEPARATOR = getDomainSeparator(name, token.address)
+  // Disabled due to the Infinity LP token dynamic naming
+  //const name = await token.name()
+  const dynamicNaming = "Infinity";
+  const DOMAIN_SEPARATOR = getDomainSeparator(dynamicNaming, token.address)
   return keccak256(
     solidityPack(
       ['bytes1', 'bytes1', 'bytes32', 'bytes32'],

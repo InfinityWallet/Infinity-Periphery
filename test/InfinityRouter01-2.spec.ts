@@ -3,9 +3,9 @@ import { solidity, MockProvider, createFixtureLoader, deployContract } from 'eth
 import { Contract } from 'ethers'
 import { BigNumber, bigNumberify } from 'ethers/utils'
 import { MaxUint256 } from 'ethers/constants'
-import IInfinityPair from '@infinitywallet/core/build/IInfinityPair.json'
+import IInfinityPair from '@infinitywallet/infinity-core/build/IInfinityPair.json'
 
-import { fixture } from './shared/fixtures'
+import { infinityFixture } from './shared/fixtures'
 import { expandTo18Decimals, getApprovalDigest, MINIMUM_LIQUIDITY } from './shared/utilities'
 
 import DeflatingERC20 from '../build/DeflatingERC20.json'
@@ -17,7 +17,7 @@ const overrides = {
   gasLimit: 9999999
 }
 
-describe('InfinityRouter02', () => {
+describe('InfinityRouter01', () => {
   const provider = new MockProvider({
     hardfork: 'istanbul',
     mnemonic: 'horn horn horn horn horn horn horn horn horn horn horn horn',
@@ -30,10 +30,10 @@ describe('InfinityRouter02', () => {
   let token1: Contract
   let router: Contract
   beforeEach(async function() {
-    const fixture = await loadFixture(fixture)
+    const fixture = await loadFixture(infinityFixture)
     token0 = fixture.token0
     token1 = fixture.token1
-    router = fixture.router02
+    router = fixture.router01
   })
 
   it('quote', async () => {
@@ -135,16 +135,16 @@ describe('fee-on-transfer tokens', () => {
   let router: Contract
   let pair: Contract
   beforeEach(async function() {
-    const fixture = await loadFixture(fixture)
+    const fixture = await loadFixture(infinityFixture)
 
     WETH = fixture.WETH
-    router = fixture.router02
+    router = fixture.router01
 
     DTT = await deployContract(wallet, DeflatingERC20, [expandTo18Decimals(10000)])
 
     // make a DTT<>WETH pair
-    await fixture.factory.createPair(DTT.address, WETH.address)
-    const pairAddress = await fixture.factory.getPair(DTT.address, WETH.address)
+    await fixture.infinityFactory.createPair(DTT.address, WETH.address)
+    const pairAddress = await fixture.infinityFactory.getPair(DTT.address, WETH.address)
     pair = new Contract(pairAddress, JSON.stringify(IInfinityPair.abi), provider).connect(wallet)
   })
 
@@ -321,16 +321,16 @@ describe('fee-on-transfer tokens: reloaded', () => {
   let DTT2: Contract
   let router: Contract
   beforeEach(async function() {
-    const fixture = await loadFixture(fixture)
+    const fixture = await loadFixture(infinityFixture)
 
-    router = fixture.router02
+    router = fixture.router01
 
     DTT = await deployContract(wallet, DeflatingERC20, [expandTo18Decimals(10000)])
     DTT2 = await deployContract(wallet, DeflatingERC20, [expandTo18Decimals(10000)])
 
     // make a DTT<>WETH pair
-    await fixture.factory.createPair(DTT.address, DTT2.address)
-    const pairAddress = await fixture.factory.getPair(DTT.address, DTT2.address)
+    await fixture.infinityFactory.createPair(DTT.address, DTT2.address)
+    const pairAddress = await fixture.infinityFactory.getPair(DTT.address, DTT2.address)
   })
 
   afterEach(async function() {

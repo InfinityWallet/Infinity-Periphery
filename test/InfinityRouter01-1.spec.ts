@@ -6,7 +6,7 @@ import { solidity, MockProvider, createFixtureLoader } from 'ethereum-waffle'
 import { ecsign } from 'ethereumjs-util'
 
 import { expandTo18Decimals, getApprovalDigest, mineBlock, MINIMUM_LIQUIDITY } from './shared/utilities'
-import { fixture } from './shared/fixtures'
+import { infinityFixture } from './shared/fixtures'
 
 chai.use(solidity)
 
@@ -15,11 +15,10 @@ const overrides = {
 }
 
 enum RouterVersion {
-  InfinityRouter01 = 'InfinityRouter01',
-  InfinityRouter02 = 'InfinityRouter02'
+  InfinityRouter01 = 'InfinityRouter01'
 }
 
-describe('InfinityRouter{01,02}', () => {
+describe('InfinityRouter{01}', () => {
   for (const routerVersion of Object.keys(RouterVersion)) {
     const provider = new MockProvider({
       hardfork: 'istanbul',
@@ -39,15 +38,14 @@ describe('InfinityRouter{01,02}', () => {
     let WETHPair: Contract
     let routerEventEmitter: Contract
     beforeEach(async function() {
-      const fixture = await loadFixture(fixture)
+      const fixture = await loadFixture(infinityFixture)
       token0 = fixture.token0
       token1 = fixture.token1
       WETH = fixture.WETH
       WETHPartner = fixture.WETHPartner
-      factory = fixture.factory
+      factory = fixture.infinityFactory
       router = {
-        [RouterVersion.InfinityRouter01]: fixture.router01,
-        [RouterVersion.InfinityRouter02]: fixture.router02
+        [RouterVersion.InfinityRouter01]: fixture.router01
       }[routerVersion as RouterVersion]
       pair = fixture.pair
       WETHPair = fixture.WETHPair
@@ -305,7 +303,7 @@ describe('InfinityRouter{01,02}', () => {
         const token0Amount = expandTo18Decimals(5)
         const token1Amount = expandTo18Decimals(10)
         const swapAmount = expandTo18Decimals(1)
-        const expectedOutputAmount = bigNumberify('1662497915624478906')
+        const expectedOutputAmount = bigNumberify('1661107404936624416')
 
         beforeEach(async () => {
           await addLiquidity(token0Amount, token1Amount)
@@ -369,7 +367,7 @@ describe('InfinityRouter{01,02}', () => {
           expect(receipt.gasUsed).to.eq(
             {
               [RouterVersion.InfinityRouter01]: 101876,
-              [RouterVersion.InfinityRouter02]: 101898
+              [RouterVersion.InfinityRouter01]: 102364
             }[routerVersion as RouterVersion]
           )
         }).retries(3)
@@ -378,7 +376,7 @@ describe('InfinityRouter{01,02}', () => {
       describe('swapTokensForExactTokens', () => {
         const token0Amount = expandTo18Decimals(5)
         const token1Amount = expandTo18Decimals(10)
-        const expectedSwapAmount = bigNumberify('557227237267357629')
+        const expectedSwapAmount = bigNumberify('557786702365015619')
         const outputAmount = expandTo18Decimals(1)
 
         beforeEach(async () => {
@@ -429,7 +427,7 @@ describe('InfinityRouter{01,02}', () => {
         const WETHPartnerAmount = expandTo18Decimals(10)
         const ETHAmount = expandTo18Decimals(5)
         const swapAmount = expandTo18Decimals(1)
-        const expectedOutputAmount = bigNumberify('1662497915624478906')
+        const expectedOutputAmount = bigNumberify('1661107404936624416')
 
         beforeEach(async () => {
           await WETHPartner.transfer(WETHPair.address, WETHPartnerAmount)
@@ -517,8 +515,7 @@ describe('InfinityRouter{01,02}', () => {
           const receipt = await tx.wait()
           expect(receipt.gasUsed).to.eq(
             {
-              [RouterVersion.InfinityRouter01]: 138770,
-              [RouterVersion.InfinityRouter02]: 138770
+              [RouterVersion.InfinityRouter01]: 139296
             }[routerVersion as RouterVersion]
           )
         }).retries(3)
@@ -527,7 +524,7 @@ describe('InfinityRouter{01,02}', () => {
       describe('swapTokensForExactETH', () => {
         const WETHPartnerAmount = expandTo18Decimals(5)
         const ETHAmount = expandTo18Decimals(10)
-        const expectedSwapAmount = bigNumberify('557227237267357629')
+        const expectedSwapAmount = bigNumberify('557786702365015619')
         const outputAmount = expandTo18Decimals(1)
 
         beforeEach(async () => {
@@ -596,7 +593,7 @@ describe('InfinityRouter{01,02}', () => {
         const WETHPartnerAmount = expandTo18Decimals(5)
         const ETHAmount = expandTo18Decimals(10)
         const swapAmount = expandTo18Decimals(1)
-        const expectedOutputAmount = bigNumberify('1662497915624478906')
+        const expectedOutputAmount = bigNumberify('1661107404936624416')
 
         beforeEach(async () => {
           await WETHPartner.transfer(WETHPair.address, WETHPartnerAmount)
@@ -663,7 +660,7 @@ describe('InfinityRouter{01,02}', () => {
       describe('swapETHForExactTokens', () => {
         const WETHPartnerAmount = expandTo18Decimals(10)
         const ETHAmount = expandTo18Decimals(5)
-        const expectedSwapAmount = bigNumberify('557227237267357629')
+        const expectedSwapAmount = bigNumberify('557786702365015619')
         const outputAmount = expandTo18Decimals(1)
 
         beforeEach(async () => {

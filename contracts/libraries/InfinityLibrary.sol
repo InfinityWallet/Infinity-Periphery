@@ -21,7 +21,7 @@ library InfinityLibrary {
                 hex'ff',
                 factory,
                 keccak256(abi.encodePacked(token0, token1)),
-                hex'efd01a28d161e2763dda8a45d48c0daac46bedb063a836e4d246014cdb6a078d' // init code hash
+                hex'e1abf0101f3e1c81c47056520722910d4e628bc13e1fb9b3f7cc3b877b34b959' // init code hash
             ))));
     }
 
