@@ -1,7 +1,7 @@
 {
   "name": "@infinitywallet/infinity-periphery",
-  "version": "1.0.0",
-  "description": "🎚 Peripheral smart contracts for interacting with the Infinity Protocol",
+  "version": "1.0.2",
+  "description": "Peripheral smart contracts for interacting with the Infinity Protocol",
   "engines": {
     "node": ">=10"
   },
